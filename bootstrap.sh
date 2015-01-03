@@ -90,5 +90,3 @@ sudo cp support-files/mysql.server /etc/init.d/mysql
 sudo chmod u+x /etc/init.d/mysql
 sudo chkconfig --add mysql
 
-# -------------------------    安装HHVM    -----------------------------
-
