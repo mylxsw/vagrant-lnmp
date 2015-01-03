@@ -1,5 +1,4 @@
 ##vagrant-LNMP
-==============
 
 ###软件信息
 Cent OS 7
