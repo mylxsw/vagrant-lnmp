@@ -39,6 +39,14 @@ cd nginx-1.6.2
 make
 sudo make install
 
+# Nginx 环境变量
+cd ~
+echo 'if [ -d "/usr/local/nginx/sbin" ] ; then
+    PATH=$PATH:/usr/local/nginx/sbin
+    export PATH
+fi' > env_nginx.sh
+sudo cp env_nginx.sh /etc/profile.d/env_nginx.sh
+
 # ------------------------    安装PHP5.6    ---------------------------
 # 下载PHP源码并执行编译安装
 cd ~
@@ -54,7 +62,14 @@ sudo make install
 sudo cp php.ini-development  /usr/local/php/etc/php.ini
 sudo mv /usr/local/php/etc/php-fpm.conf.default /usr/local/php/etc/php-fpm.conf
 
+# PHP环境变量
+cd ~
+echo 'if [ -d "/usr/local/php/bin" ] ; then
+    PATH=$PATH:/usr/local/php/bin
+    export PATH
+fi' > env_php.sh
 
+sudo mv env_php.sh /etc/profile.d/env_php.sh
 
 # -----------------------    安装mysql    ------------------------------
 # 编译MySQL时间比较长，需要等很长时间
@@ -89,4 +104,13 @@ sudo cp support-files/my-default.cnf /etc/my.cnf
 sudo cp support-files/mysql.server /etc/init.d/mysql
 sudo chmod u+x /etc/init.d/mysql
 sudo chkconfig --add mysql
+
+# MySQL 环境变量
+cd ~
+echo 'if [ -d "/usr/local/mysql/bin" ] ; then
+    PATH=$PATH:/usr/local/mysql/bin
+    export PATH
+fi' > env_mysql.sh
+sudo cp env_mysql.sh /etc/profile.d/env_mysql.sh
+
 
