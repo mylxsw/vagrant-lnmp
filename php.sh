@@ -56,6 +56,6 @@ sudo ln -s /usr/local/php/etc/php.ini /etc/php.ini
 
 # 修改配置，设定时区
 cd ~
-echo "date.timezon='Asia/Shanghai'" > php.ini.tmp
+echo "date.timezone='Asia/Shanghai'" > php.ini.tmp
 sudo sh -c 'cat php.ini.tmp >> /etc/php.ini'
 rm -f php.ini.tmp

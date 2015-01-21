@@ -28,43 +28,55 @@ sudo ln -s /usr/local/nginx/conf/nginx.conf /etc/nginx.conf
 cd ~
 echo 'user  vagrant;
 worker_processes  auto;
+
 error_log  logs/error.log;
+
 events {
     worker_connections  1024;
 }
+
 http {
     include       mime.types;
     default_type  application/octet-stream;
     sendfile        on;
     keepalive_timeout  65;
+
     server {
         listen       80;
         server_name  localhost;
         root         /vagrant/www;
+
         location / {
             index  index.html index.htm index.php;
         }
+
         location ~ \.php$ {
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
             fastcgi_param  SCRIPT_FILENAME  $document_root$fastcgi_script_name;
             include        fastcgi_params;
-		}
+	}
     }
+
     server {
         listen       443 ssl;
         server_name  localhost;
         root         /vagrant/www/security;
+
         ssl_certificate      /vagrant/server.crt;
         ssl_certificate_key  /vagrant/server_nopwd.key;
+
         ssl_session_cache    shared:SSL:1m;
         ssl_session_timeout  5m;
+
         ssl_ciphers  HIGH:!aNULL:!MD5;
         ssl_prefer_server_ciphers  on;
+
         location / {
             index  index.html index.htm index.php;
             #try_files $uri /app_dev.php$is_args$args;
         }
+
         location ~ \.php$ {
             fastcgi_pass   127.0.0.1:9000;
             fastcgi_index  index.php;
