@@ -11,11 +11,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "chef/centos-7.0"
-  config.vm.provision :shell, path: "base.sh"
-  config.vm.provision :shell, path: "nginx.sh"
-  config.vm.provision :shell, path: "php.sh"
-  config.vm.provision :shell, path: "mysql.sh"
-  config.vm.provision :shell, path: "rabbitmq.sh"
+  #config.vm.provision :shell, path: "base.sh"
+  #config.vm.provision :shell, path: "nginx.sh"
+  #config.vm.provision :shell, path: "php.sh"
+  #config.vm.provision :shell, path: "mysql.sh"
+  #config.vm.provision :shell, path: "rabbitmq.sh"
 
 
   # Disable automatic box update checking. If you disable this, then
@@ -50,6 +50,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.vm.synced_folder "/Users/mylxsw/codes/golang", "/vagrant/go"
   config.vm.synced_folder "/Users/mylxsw/Vagrants/share", "/vagrant/share"
   config.vm.synced_folder "/Users/mylxsw/codes/php/aicode", "/vagrant/www"
+  config.vm.synced_folder "/codes/c", "/vagrant/codes/c"
+  config.vm.synced_folder "/codes/eclipse", "/vagrant/codes/eclipse"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
