@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if test -f /usr/local/vagrant.mysql.lock
+then
+    exit
+fi
 
 # -----------------------    安装mysql    ------------------------------
 # 编译MySQL时间比较长，需要等很长时间
@@ -38,3 +42,6 @@ echo 'if [ -d "/usr/local/mysql/bin" ] ; then
     export PATH
 fi' > env_mysql.sh
 sudo cp env_mysql.sh /etc/profile.d/env_mysql.sh
+
+
+touch /usr/local/vagrant.mysql.lock

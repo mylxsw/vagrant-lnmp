@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if test -f /usr/local/vagrant.nginx.lock
+then
+    exit
+fi
+
 # --------------------------   安装NGINX  -----------------------------
 cd ~
 wget http://www.openssl.org/source/openssl-1.0.1j.tar.gz
@@ -87,3 +92,5 @@ http {
 }' > nginx.conf
 sudo mv /usr/local/nginx/conf/nginx.conf /usr/local/nginx/conf/nginx.conf.default
 sudo mv nginx.conf /usr/local/nginx/conf/nginx.conf
+
+touch /usr/local/vagrant.nginx.lock

@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if test -f /usr/local/vagrant.base.lock
+then
+    exit
+fi
+
 # 安装常用软件
 sudo yum install vim -y
 sudo yum install epel-release -y
@@ -29,3 +34,5 @@ sudo yum install cmake -y
 sudo yum install gcc-c++ -y
 sudo yum install bison -y
 sudo yum install ncurses-devel -y
+
+touch /usr/local/vagrant.base.lock

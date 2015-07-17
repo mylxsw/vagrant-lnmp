@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+if test -f /usr/local/vagrant.php.lock
+then
+    exit
+fi
+
 # ------------------------    安装PHP5.6    ---------------------------
 
 # 修正php启用opcache失败问题
@@ -59,3 +64,5 @@ cd ~
 echo "date.timezone='Asia/Shanghai'" > php.ini.tmp
 sudo sh -c 'cat php.ini.tmp >> /etc/php.ini'
 rm -f php.ini.tmp
+
+touch /usr/local/vagrant.php.lock
