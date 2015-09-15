@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.provision :shell, path: "nginx.sh"
   config.vm.provision :shell, path: "php.sh"
   config.vm.provision :shell, path: "mysql.sh"
-  config.vm.provision :shell, path: "rabbitmq.sh"
+  #config.vm.provision :shell, path: "rabbitmq.sh"
 
 
   # Disable automatic box update checking. If you disable this, then
@@ -27,12 +27,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
-  config.vm.network "forwarded_port", guest: 80, host: 8000
-  config.vm.network "forwarded_port", guest: 3306, host: 3306
+  #config.vm.network "forwarded_port", guest: 80, host: 8000
+  #config.vm.network "forwarded_port", guest: 8080, host: 8080
+  #config.vm.network "forwarded_port", guest: 3306, host: 3306
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  #config.vm.network "private_network", ip: "10.100.100.10"
+  config.vm.network "private_network", ip: "10.100.100.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -55,6 +56,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder "/codes/eclipse", "/vagrant/codes/eclipse"
   config.vm.synced_folder "/codes/shell", "/vagrant/codes/shell"
   config.vm.synced_folder "/codes/work/e-business", "/vagrant/www/e-business"
+  config.vm.synced_folder "/codes/js/react", "/vagrant/www/react"
+  config.vm.synced_folder "/codes/github", "/vagrant/github"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
